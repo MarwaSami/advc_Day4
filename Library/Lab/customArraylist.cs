@@ -14,7 +14,7 @@ using System.Threading.Tasks;
         public  int Capacity { get { return list.Length; } }
         public customArraylist(int _capacity=1)
         {
-            this.count = 1;
+            this.count = 0;
             this.capacity = _capacity;
             this.list=new object[this.capacity];
         }
@@ -45,7 +45,7 @@ using System.Threading.Tasks;
         {
         if(index>=capacity)
             throw new IndexOutOfRangeException();
-         object[] arr= new object[this.count-1];
+         object[] arr= new object[this.count];
         int pointer = 0;
          for (int i = 0; i < count; i++)
          {
@@ -55,11 +55,13 @@ using System.Threading.Tasks;
             }
           else
             {
-                arr[pointer] = this.list[pointer];
+                arr[pointer] = this.list[i];
                 pointer++;
             }
          }
-
+        Array.Copy(arr, arr, count - 1);
+        this.count = count - 1;
+        this.list = arr;
     }
         public IEnumerator GetEnumerator()
         {
