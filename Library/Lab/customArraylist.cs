@@ -39,7 +39,26 @@ using System.Threading.Tasks;
             }
             return list[index];
        }
-  
+        public void Remove_At(int index)
+        {
+        if(index>=capacity)
+            throw new IndexOutOfRangeException();
+         object[] arr= new object[this.count-1];
+        int pointer = 0;
+         for (int i = 0; i < count; i++)
+         {
+          if(i==index)
+            {
+                continue;
+            }
+          else
+            {
+                arr[pointer] = this.list[pointer];
+                pointer++;
+            }
+         }
+
+    }
         public IEnumerator GetEnumerator()
         {
             return new Enumerate(this);
