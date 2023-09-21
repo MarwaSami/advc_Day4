@@ -22,7 +22,9 @@ using System.Threading.Tasks;
         {
             if (this.count == this.capacity)
                 Array.Resize(ref this.list, this.list.Length*2);
-                this.list[count++] = elem;
+            this.list[count++] = elem;
+            this.capacity=list.Length;
+
         }
         public void trimExcess()
         {
